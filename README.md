@@ -8,7 +8,14 @@ To send timely notifications when a class hour starts to your desired discord ch
 
 You can also view your daily timetable.
 
+```
+.help       - display the commands available in timetable bot
+```
 
-#Requirements
+```
+.monday     - display monday's timetable
+```
 
-discord.py - pip3 install discord.py
+# Requirements
+
+discord.py - `pip3 install discord.py`

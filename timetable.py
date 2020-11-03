@@ -1,22 +1,18 @@
 import discord
 import time
 import asyncio
+from datetime import datetime
 from discord.ext import commands, tasks
 from itertools import cycle
 
 client = commands.Bot(command_prefix = '.')
 client.remove_command('help')
-
-status = cycle(['Making Your Life Easy!!', 'Listening to .help'])
+client.launch_time = datetime.utcnow()
 
 @client.event
 async def on_ready():
-    change_status.start()
+    await client.change_presence(activity=discord.Game('Listening to .help'))
     print('Bot is ready...')
-
-@tasks.loop(seconds=10)
-async def change_status():
-    await client.change_presence(activity=discord.Game(next(status)))
 
 @client.command(pass_context=True)
 async def help(ctx):
@@ -28,6 +24,7 @@ async def help(ctx):
 
     embed.set_author(name="Command's you can use...")
     embed.add_field(name='.ping',value='Pings the bot', inline=False)
+    embed.add_field(name='.uptime',value="Shows the uptime of bot", inline=False)
     embed.add_field(name='.hello',value="let's find out...", inline=False)
     embed.add_field(name='.dce', value='Display the subject zoom link',inline=False)
     embed.add_field(name='.tv', value='Display the subject zoom link',inline=False)
@@ -52,6 +49,14 @@ async def help(ctx):
 @client.command()
 async def ping(ctx):
     await ctx.send(f"{ctx.author.mention}\nPing! {round(client.latency * 1000)}ms")
+    
+@client.command()
+async def uptime(ctx):
+    delta_uptime = datetime.utcnow() - client.launch_time
+    hours, remainder = divmod(int(delta_uptime.total_seconds()), 3600)
+    minutes, seconds = divmod(remainder, 60)
+    days, hours = divmod(hours, 24)
+    await ctx.send(f"{ctx.author.mention}\n{days}day, {hours}hrs, {minutes}min, {seconds}sec")
 
 @client.command()
 async def hello(ctx):

@@ -9,14 +9,14 @@ To send timely notifications when a class hour starts to your desired discord ch
 You can also view your daily timetable and zoom link
 
 ```
-.help       - display the commands available in timetable bot
+.h       - display the commands available in timetable bot
 ```
 
 ```
-.monday     - display monday's timetable
+.mon     - display monday's timetable
 ```
 ```
-.dce        - display dce lec. zoom link
+.sub     - display dce lec. zoom link
 ```
 
 # Requirements

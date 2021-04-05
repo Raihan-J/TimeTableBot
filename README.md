@@ -16,7 +16,7 @@ You can also view your daily timetable and zoom link
 .mon     - display monday's timetable
 ```
 ```
-.sub     - display dce lec. zoom link
+.sub     - display sub lec. zoom link
 ```
 
 # Requirements

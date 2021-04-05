@@ -6,7 +6,7 @@ from itertools import cycle
 
 client = commands.Bot(command_prefix = '.')
 
-status = cycle(['.h', '40+ commands'])
+status = cycle(['.h', '... year routine'])
 
 client.remove_command('help')
 
